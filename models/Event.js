@@ -17,7 +17,15 @@ const EventSchema = new Schema({
   location: {
     type: String,
     required: true
-  }
+  },
+  tracklist: [
+    {
+      nameOfArtist: String,
+      nameOfSong: String,
+      name: String,
+      duration: Number
+    }
+  ]
 });
 
 module.exports = mongoose.model("Event", EventSchema);
