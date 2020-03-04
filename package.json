@@ -4,7 +4,10 @@
   "description": "Backend for final project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "DEBUG=Wishlist-app-backend:* nodemon --inspect ./bin/www",
+    "seed": "node seed/seed.js",
+    "remote": "NODE_ENV=production DEBUG=Wishlist-app-backend:* nodemon --inspect ./bin/www",
+    "build": "node build --output public"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,7 @@
   },
   "homepage": "https://github.com/moequan/Wishlist-app-backend#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "express": "^4.17.1",
