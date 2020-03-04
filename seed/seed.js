@@ -5,11 +5,11 @@ const Event = require("../models/Event");
 
 (async function() {
   /** CONNECT TO MONGO */
-  mongoose.connect("Our API / DB", {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-  });
+//   mongoose.connect("Our API / DB", {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true
+//   });
 
   mongoose.connection.on(
     "error",

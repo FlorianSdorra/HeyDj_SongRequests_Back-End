@@ -14,13 +14,15 @@ const app = express();
 /** LOGS */
 app.use(logger('dev'));
 
+console.log("APP.JS IS RUNNING")
+
 /** CONNECT TO MONGO */
-mongoose.connect(env.db, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
-});
+// mongoose.connect("", {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false
+// });
 
 mongoose.connection.on(
   'error',
@@ -40,7 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /** ROUTES */
-app.use('/eventsRouter', indexRouter);
+// app.use('/eventsRouter', eventsRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 
