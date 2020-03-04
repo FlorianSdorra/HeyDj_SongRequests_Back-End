@@ -4,6 +4,7 @@ const User = require("../models/User");
 const Event = require("../models/Event");
 
 (async function() {
+    console.log("Seed.js is running")
   /** CONNECT TO MONGO */
 //   mongoose.connect("Our API / DB", {
 //     useNewUrlParser: true,
@@ -20,32 +21,33 @@ const Event = require("../models/Event");
     console.log(`Connected to the database...`);
   });
 
-  console.log(`First, i will delete all the old users`);
+//   console.log(`First, i will delete all the old users`);
 
-  /** DELETE ALL USERS */
-  try {
-    await User.deleteMany({});
-    console.log("Old users moved to a better place. Spandau");
-  } catch (e) {
-    console.log(e);
-  }
+//   /** DELETE ALL USERS */
+//   try {
+//     await User.deleteMany({});
+//     console.log("Old users moved to a better place. Spandau");
+//   } catch (e) {
+//     console.log(e);
+//   }
 
-  /** DELETE ALL EVENTS */
-  try {
-    await Event.deleteMany({});
-    console.log("Old events moved to a better place. Spandau");
-  } catch (e) {
-    console.log(e);
-  }
+//   /** DELETE ALL EVENTS */
+//   try {
+//     await Event.deleteMany({});
+//     console.log("Old events moved to a better place. Spandau");
+//   } catch (e) {
+//     console.log(e);
+//   }
 
-  /** DELETE ALL EVENTS */
-  try {
-    await Event.deleteMany({});
-  } catch (e) {
-    console.log(e);
-  }
+//   /** DELETE ALL EVENTS */
+//   try {
+//     await Event.deleteMany({});
+//   } catch (e) {
+//     console.log(e);
+//   }
 
   /** CREATE 10 FAKE USERS */
+  console.log("CREATING 10 FAKE USERS.")
   const userPromises = Array(10)
     .fill(null)
     .map(() => {
@@ -56,7 +58,7 @@ const Event = require("../models/Event");
         role: faker.random.arrayElement(["Admin", "User"])
       });
 
-      const token = user.generateAuthToken();
+    //   const token = user.generateAuthToken();
       return user.save();
     });
 
