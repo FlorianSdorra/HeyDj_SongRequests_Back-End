@@ -21,30 +21,30 @@ const Event = require("../models/Event");
     console.log(`Connected to the database...`);
   });
 
-//   console.log(`First, i will delete all the old users`);
+  console.log(`First, i will delete all the old users`);
 
-//   /** DELETE ALL USERS */
-//   try {
-//     await User.deleteMany({});
-//     console.log("Old users moved to a better place. Spandau");
-//   } catch (e) {
-//     console.log(e);
-//   }
+  /** DELETE ALL USERS */
+  try {
+    await User.deleteMany({});
+    console.log("Old users moved to a better place. Spandau");
+  } catch (e) {
+    console.log(e);
+  }
 
-//   /** DELETE ALL EVENTS */
-//   try {
-//     await Event.deleteMany({});
-//     console.log("Old events moved to a better place. Spandau");
-//   } catch (e) {
-//     console.log(e);
-//   }
+  /** DELETE ALL EVENTS */
+  try {
+    await Event.deleteMany({});
+    console.log("Old events moved to a better place. Spandau");
+  } catch (e) {
+    console.log(e);
+  }
 
-//   /** DELETE ALL EVENTS */
-//   try {
-//     await Event.deleteMany({});
-//   } catch (e) {
-//     console.log(e);
-//   }
+  /** DELETE ALL EVENTS */
+  try {
+    await Event.deleteMany({});
+  } catch (e) {
+    console.log(e);
+  }
 
   /** CREATE 10 FAKE USERS */
   console.log("CREATING 10 FAKE USERS.")
@@ -76,7 +76,7 @@ const Event = require("../models/Event");
       const event = new Event({
         title: faker.random.words(),
         artist: faker.internet.userName(),
-        year: new Date(faker.date.past()).getFullYear(),
+        date: new Date(faker.date.past()).getFullYear(),
         location: faker.address.city()
       });
 
@@ -85,6 +85,7 @@ const Event = require("../models/Event");
 
   try {
     await Promise.all(eventPromises);
+    console.log("FAKE EVENTS STORED IN DATABASE!")
   } catch (e) {
     console.log(e);
   }
