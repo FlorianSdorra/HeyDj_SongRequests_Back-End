@@ -6,11 +6,11 @@ const Event = require("../models/Event");
 (async function() {
     console.log("Seed.js is running")
   /** CONNECT TO MONGO */
-//   mongoose.connect("Our API / DB", {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true
-//   });
+  mongoose.connect("mongodb://localhost:27017/HEYDJ", {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+  });
 
   mongoose.connection.on(
     "error",
