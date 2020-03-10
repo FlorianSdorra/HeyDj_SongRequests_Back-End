@@ -8,17 +8,8 @@ var app = require('../app');
 var debug = require('debug')('Wishlist-app-backend:server');
 var http = require('http');
 
-/**
- * Get port from environment and store in Express.
- */
-/**
-*var port = normalizePort(process.env.PORT || '3000');
-*app.set('port', port);
-*/
-
-/**
- * Create HTTP server.
- */
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
 var server = http.createServer(app);
 
