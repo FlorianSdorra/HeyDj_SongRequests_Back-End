@@ -5,6 +5,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 
 /** ROUTERS */
+const indexRouter = require("./routes/index")
 const eventsRouter = require('./routes/events');
 const usersRouter = require('./routes/users');
 
@@ -42,7 +43,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /** ROUTES */
-// app.use('/eventsRouter', eventsRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 
