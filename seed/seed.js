@@ -76,7 +76,7 @@ const Event = require("../models/Event");
       const event = new Event({
         title: faker.random.words(),
         artist: faker.internet.userName(),
-        date: new Date(faker.date.past()).getFullYear(),
+        date: `${faker.date.weekday()}  ${faker.date.month()}`,
         location: faker.address.city()
       });
 
