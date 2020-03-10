@@ -1,0 +1,33 @@
+{
+  "name": "wishlist-app-backend",
+  "version": "1.0.0",
+  "description": "Backend for final project",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=Wishlist-app-backend:* nodemon --inspect ./bin/www",
+    "seed": "node seed/seed.js",
+    "remote": "NODE_ENV=production DEBUG=Wishlist-app-backend:* nodemon --inspect ./bin/www",
+    "build": "node build --output public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moequan/Wishlist-app-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moequan/Wishlist-app-backend/issues"
+  },
+  "homepage": "https://github.com/moequan/Wishlist-app-backend#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "faker": "^4.1.0",
+    "http-errors": "^1.7.3",
+    "mongoose": "^5.9.2",
+    "morgan": "^1.9.1"
+  }
+}
