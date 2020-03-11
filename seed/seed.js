@@ -4,7 +4,7 @@ const User = require("../models/User");
 const Event = require("../models/Event");
 
 (async function() {
-    console.log("Seed.js is running")
+  console.log("Seed.js is running");
   /** CONNECT TO MONGO */
   mongoose.connect("mongodb://localhost:27017/HEYDJ", {
     useNewUrlParser: true,
@@ -47,7 +47,7 @@ const Event = require("../models/Event");
   }
 
   /** CREATE 10 FAKE USERS */
-  console.log("CREATING 10 FAKE USERS.")
+  console.log("CREATING 10 FAKE USERS.");
   const userPromises = Array(10)
     .fill(null)
     .map(() => {
@@ -55,10 +55,9 @@ const Event = require("../models/Event");
         email: faker.internet.email(),
         password: faker.internet.password(),
         userName: faker.internet.userName(),
-        role: faker.random.arrayElement(["Admin", "User"])
       });
 
-    //   const token = user.generateAuthToken();
+      //   const token = user.generateAuthToken();
       return user.save();
     });
 
@@ -85,7 +84,7 @@ const Event = require("../models/Event");
 
   try {
     await Promise.all(eventPromises);
-    console.log("FAKE EVENTS STORED IN DATABASE!")
+    console.log("FAKE EVENTS STORED IN DATABASE!");
   } catch (e) {
     console.log(e);
   }

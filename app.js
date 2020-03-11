@@ -4,6 +4,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
+let Post = require('./models/Post');
+
+
+
 
 /** ROUTERS */
 const indexRouter = require("./routes/index")
@@ -19,12 +23,12 @@ app.use(logger('dev'));
 console.log("APP.JS IS RUNNING")
 
 /** CONNECT TO MONGO */
-// mongoose.connect("", {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false
-// });
+mongoose.connect("mongodb://localhost:27017/HEYDJ", {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+});
 
 mongoose.connection.on(
   'error',
@@ -41,7 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ['http://localhost:3001'],
+    origin: ['http://localhost:3000'],
     credentials: true
   })
 );
