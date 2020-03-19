@@ -7,7 +7,7 @@ const cors = require('cors');
 
 /** ROUTERS */
 const indexRouter = require('./routes/index');
-// const eventsRouter = require('./routes/events');
+const eventsRouter = require('./routes/events');
 const usersRouter = require('./routes/users');
 // const tracksRouter = require('./routes/tracks');
 
@@ -50,7 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /** ROUTES */
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use('/events', eventsRouter);
+app.use('/events', eventsRouter);
 // app.use('/tracks', tracksRouter);
 
 /** ERROR HANDLING */

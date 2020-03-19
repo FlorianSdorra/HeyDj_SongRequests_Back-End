@@ -15,8 +15,6 @@ const {
   logoutUser
 } = require('../controllers/usersController');
 
-// const { getMyEvents } = require('../controllers/eventsController');
-
 router
   .route('/')
   .get(auth, isAdmin, getUsers)
@@ -31,7 +29,5 @@ router
   .get(auth, getUser)
   .delete(auth, deleteUser)
   .put(auth, updateUser);
-
-// router.route('/:id/events').get(auth, getMyEvents);
 
 module.exports = router;

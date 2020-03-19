@@ -1,4 +1,4 @@
-const Event = require("../models/Event");
+const Event = require('../models/Event');
 
 exports.getEvents = async (req, res, next) => {
   try {
@@ -9,9 +9,18 @@ exports.getEvents = async (req, res, next) => {
   }
 };
 
+exports.getMyEvents = async (req, res, next) => {
+  try {
+    const events = await Event.find({ userId: req.user._id });
+    res.status(200).send(events);
+  } catch (e) {
+    next(e);
+  }
+};
+
 exports.getEvent = async (req, res, next) => {
   try {
-    const event = await Event.findById(req.params.id).select("-__v");
+    const event = await Event.findById(req.params.id).select('-__v');
     if (!event) throw new createError.NotFound();
     res.status(200).send(event);
   } catch (e) {
@@ -31,9 +40,9 @@ exports.deleteEvent = async (req, res, next) => {
 
 exports.updateEvent = async (req, res, next) => {
   try {
-    const event = await Record.findByIdAndUpdate(req.params.id, req.body, {
+    const event = await Event.findByIdAndUpdate(req.params.id, req.body, {
       new: true
-    }).select("-__v");
+    }).select('-__v');
     if (!event) throw new createError.NotFound();
     res.status(200).send(event);
   } catch (e) {
@@ -43,7 +52,7 @@ exports.updateEvent = async (req, res, next) => {
 
 exports.addEvent = async (req, res, next) => {
   try {
-    const event = new Event(req.body);
+    const event = new Event({ ...req.body, userId: req.user._id });
     await event.save();
     res.status(200).send(event);
   } catch (e) {
