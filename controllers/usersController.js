@@ -1,11 +1,11 @@
-const User = require("../models/User");
-const createError = require("http-errors");
+const User = require('../models/User');
+const createError = require('http-errors');
 
 exports.getUsers = async (req, res, next) => {
   try {
     const users = await User.find()
-      .sort("lastName")
-      .select("-password -__v -tokens._id");
+      .sort('lastName')
+      .select('-password -__v -tokens._id');
     res.status(200).send(users);
   } catch (e) {
     next(e);
@@ -14,7 +14,7 @@ exports.getUsers = async (req, res, next) => {
 
 exports.getUser = async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.id).select("-password -__v");
+    const user = await User.findById(req.params.id).select('-password -__v');
     if (!user) throw new createError.NotFound();
     res.status(200).send(user);
   } catch (e) {
@@ -30,7 +30,7 @@ exports.deleteUser = async (req, res, next) => {
     res
       .status(200)
       .send(user)
-      .select("-password");
+      .select('-password');
   } catch (e) {
     next(e);
   }
@@ -58,7 +58,7 @@ exports.addUser = async (req, res, next) => {
     const data = user.getPublicFields();
     res
       .status(200)
-      .cookie("token", token, {
+      .cookie('token', token, {
         expires: new Date(Date.now() + 604800000),
         secure: false, // if we are not using https
         httpOnly: true
@@ -81,8 +81,8 @@ exports.loginUser = async (req, res, next) => {
     const data = user.getPublicFields();
     res
       .status(200)
-      .cookie("token", token, {
-        expires: new Date(Date.now() + 604800000),
+      .cookie('token', token, {
+        expires: new Date(Date.now() + 4 * 604800000),
         secure: false, // if we are not using https
         httpOnly: true
       })
@@ -93,12 +93,13 @@ exports.loginUser = async (req, res, next) => {
 };
 
 exports.authenticateUser = async (req, res, next) => {
-  res.status(200).send(req.user);
+  const user = req.user.getPublicFields();
+  res.status(200).send(user);
 };
 
 exports.logoutUser = async (req, res, next) => {
   res
-    .clearCookie("token")
+    .clearCookie('token')
     .status(200)
-    .send("Bye bye");
+    .send('Bye bye');
 };

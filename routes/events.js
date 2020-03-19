@@ -1,43 +1,20 @@
-// const express = require("express");
+// const express = require('express');
 // const router = express.Router();
+// const auth = require('../middleware/authenticator');
 
-// const {
-//   getEvents,
-//   getEvent,
-//   addEvent,
-//   deleteEvent,
-//   updateEvent
-// } = require("../controllers/eventsController");
+// const { getEvents, getEvent, addEvent, deleteEvent, updateEvent } = require('../controllers/eventsController');
 
 // router
-//   .route("/")
+//   .route('/')
 //   .get(getEvents)
-//   .post(addEvent);
+//   .post(auth, addEvent);
 
 // router
-//   .post("/:id")
+//   .route('/:id')
 //   .get(getEvent)
-//   .delete(deleteEvent)
-//   .put(updateEvent);
+//   .delete(auth, deleteEvent)
+//   .put(auth, updateEvent);
+
+// router.route('/:id/tracks').get(getEventsTracks);
 
 // module.exports = router;
-
-const express = require("express");
-const router = express.Router();
-const {
-  getEvents,
-  getEvent,
-  addEvent,
-  deleteEvent,
-  updateEvent
-} = require("../controllers/eventsController");
-router
-  .route("/")
-  .get(getEvents)
-  .post(addEvent);
-router
-  .route("/:id")
-  .get(getEvent)
-  .delete(deleteEvent)
-  .put(updateEvent);
-module.exports = router;
