@@ -9,6 +9,7 @@ const cors = require('cors');
 const indexRouter = require('./routes/index');
 const eventsRouter = require('./routes/events');
 const usersRouter = require('./routes/users');
+const tracksRouter = require('./routes/tracks')
 // const tracksRouter = require('./routes/tracks');
 
 /** INIT THE SERVER */
@@ -44,6 +45,8 @@ app.use(
   })
 );
 
+
+
 /** STATIC FILES */
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -51,6 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
+app.use('/tracks',tracksRouter)
 // app.use('/tracks', tracksRouter);
 
 /** ERROR HANDLING */
