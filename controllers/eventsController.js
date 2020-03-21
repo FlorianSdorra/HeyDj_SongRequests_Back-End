@@ -1,4 +1,5 @@
 const Event = require('../models/Event');
+const Track = require('../models/Track');
 
 exports.getEvents = async (req, res, next) => {
   try {
@@ -23,6 +24,18 @@ exports.getEvent = async (req, res, next) => {
     const event = await Event.findById(req.params.id).select('-__v');
     if (!event) throw new createError.NotFound();
     res.status(200).send(event);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.getEventsTracks = async (req, res, next) => {
+  try {
+    const tracks = await Track.find({ eventId: req.params.id })
+      .select('-__v')
+      .sort([['votes', 'descending']]);
+    if (!tracks) throw new createError.NotFound();
+    res.status(200).send(tracks);
   } catch (e) {
     next(e);
   }
