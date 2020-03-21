@@ -9,8 +9,12 @@ const cors = require('cors');
 const indexRouter = require('./routes/index');
 const eventsRouter = require('./routes/events');
 const usersRouter = require('./routes/users');
+<<<<<<< HEAD
 const tracksRouter = require('./routes/tracks')
 // const tracksRouter = require('./routes/tracks');
+=======
+const tracksRouter = require('./routes/tracks');
+>>>>>>> bb3228232b93475b3c0b96a1228e1223e02d8798
 
 /** INIT THE SERVER */
 const app = express();
@@ -54,8 +58,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
-app.use('/tracks',tracksRouter)
-// app.use('/tracks', tracksRouter);
+
+app.use('/tracks', tracksRouter);
 
 /** ERROR HANDLING */
 app.use(function(req, res, next) {

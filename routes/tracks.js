@@ -1,16 +1,15 @@
-// const express = require('express');
-// const router = express.Router();
-// const auth = require('../middleware/authenticator');
+const express = require('express');
+const router = express.Router();
+const auth = require('../middleware/authenticator');
 
-// const { getTrack, addTrack, deleteTrack, updateTrack } = require('../controllers/eventsController');
+const { getTrack, addTrack, deleteTrack, updateTrack } = require('../controllers/tracksController');
 
-// router.route('/').post(addTrack);
-// // WHAT UP WITH THE COOKIES
+router.route('/').post(addTrack);
 
-// router
-//   .route('/:id')
-//   .get(getTrack)
-//   .delete(deleteTrack)
-//   .put(updateTrack);
+router
+  .route('/:id')
+  .get(getTrack)
+  .delete(deleteTrack)
+  .put(updateTrack);
 
-// module.exports = router;
+module.exports = router;

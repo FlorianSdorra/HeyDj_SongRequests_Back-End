@@ -8,7 +8,8 @@ const {
   addEvent,
   deleteEvent,
   updateEvent,
-  getMyEvents
+  getMyEvents,
+  getEventsTracks
 } = require('../controllers/eventsController');
 
 router
@@ -24,6 +25,6 @@ router
   .delete(auth, deleteEvent)
   .put(auth, updateEvent);
 
-// router.route('/:id/tracks').get(getEventsTracks);
+router.route('/:id/tracks').get(getEventsTracks);
 
 module.exports = router;
