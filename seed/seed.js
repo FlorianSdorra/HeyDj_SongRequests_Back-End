@@ -47,9 +47,9 @@ const Track = require('../models/Track');
     console.log(e);
   }
 
-//   console.log(`I am creating 10 fake users`);
+  //   console.log(`I am creating 10 fake users`);
 
-//   /** CREATE 20 FAKE USERS */
+  //   /** CREATE 20 FAKE USERS */
   const userPromises = Array(10)
     .fill(null)
     .map(() => {
@@ -60,6 +60,11 @@ const Track = require('../models/Track');
         password: 'heydj',
         role: faker.random.arrayElement(['Admin', 'User'])
       });
+      console.log(`Created user:`);
+      console.log(`Email: ${user.email}`);
+      console.log(`Password: ${user.password}`);
+      console.log(`Role: ${user.role}`);
+      console.log(`-----------------------------`);
 
       const token = user.generateAuthToken();
       return user.save();
@@ -77,16 +82,16 @@ const Track = require('../models/Track');
   /** CREATE 10 FAKE EVENTS FOR EACH USER */
   const allUsers = await User.find();
   for (const user of allUsers) {
-    const eventsPromises = Array(2)
+    const eventsPromises = Array(5)
       .fill(null)
       .map(() => {
         const event = new Event({
           userId: user._id,
           title: faker.name.lastName(),
           artist: faker.name.firstName(),
-          date: faker.date.future(""),
+          date: faker.date.future(''),
           location: faker.address.city(),
-          time: faker.date.future(""),
+          time: faker.date.future(''),
           genre: faker.name.firstName()
         });
 
@@ -95,7 +100,7 @@ const Track = require('../models/Track');
 
     try {
       await Promise.all(eventsPromises);
-      console.log(`events for ${user.firstName} ${user.lastName} stored in the database!`);
+      console.log(`Created 10 events for ${user.firstName} ${user.lastName}!`);
     } catch (e) {
       console.log(e);
     }
@@ -116,7 +121,6 @@ const Track = require('../models/Track');
           artwork: faker.image.imageUrl(),
           deezerId: faker.hacker.abbreviation(),
           duration: faker.hacker.noun()
-
         });
 
         return track.save();
@@ -124,7 +128,7 @@ const Track = require('../models/Track');
 
     try {
       await Promise.all(notPromises);
-      console.log(`Create 15 tracks for your event, ${event.title}`);
+      console.log(`Created 15 tracks for your event, ${event.title}`);
     } catch (e) {
       console.log(e);
     }
