@@ -21,12 +21,14 @@ app.use(logger('dev'));
 console.log('APP.JS IS RUNNING');
 
 /** CONNECT TO MONGO */
-mongoose.connect('mongodb://localhost:27017/HEYDJ', {
+mongoose.connect("mongodb+srv://flo:0OEqIlxiIDRVkVlB@cluster0-hkch3.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
   useFindAndModify: false
 });
+
+//atlas UN&PW:: flo 0OEqIlxiIDRVkVlB
 
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 

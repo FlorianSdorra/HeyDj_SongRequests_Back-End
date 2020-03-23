@@ -9,7 +9,10 @@ const Track = require('../models/Track');
 
 (async function() {
   /** CONNECT TO MONGO */
-  mongoose.connect('mongodb://localhost:27017/HEYDJ', {
+  //"mongodb+srv://flo:krjAXHmI6Br0ueAl@todocluster-5dky8.mongodb.net/test?retryWrites=true&w=majority"
+  //mongodb+srv://flo:<password>@cluster0-hkch3.mongodb.net/test?retryWrites=true&w=majority
+
+  mongoose.connect("mongodb+srv://flo:0OEqIlxiIDRVkVlB@cluster0-hkch3.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
@@ -135,3 +138,5 @@ const Track = require('../models/Track');
   }
   mongoose.connection.close();
 })();
+
+
