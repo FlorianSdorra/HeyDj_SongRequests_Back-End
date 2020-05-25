@@ -1,5 +1,14 @@
 const Track = require('../models/Track');
 
+exports.getTracks = async (req, res, next) => {
+  try {
+    const tracks = await Track.find();
+    res.status(200).send(tracks);
+  } catch (e) {
+    next(e);
+  }
+};
+
 exports.getTrack = async (req, res, next) => {
   try {
     const track = await Track.findById(req.params.id).select('-__v');
