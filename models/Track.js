@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const EventSchema = new Schema({
-  userId: {
-    type: String,
-    required: true
-  },
-  title: {
+const TracksSchema = new Schema({
+  eventId: {
     type: String,
     required: true
   },
@@ -14,21 +10,30 @@ const EventSchema = new Schema({
     type: String,
     required: true
   },
-  date: {
+  album: {
     type: String,
     required: true
   },
-  location: {
+  title: {
     type: String,
     required: true
   },
-  time: {
+  artwork: {
     type: String,
     required: true
   },
-  genre: {
-    type: String
+  deezerId: {
+    type: String,
+    required: true
+  },
+  duration: {
+    type: String,
+    required: true
+  },
+  votes: {
+    type: Number,
+    default: 0
   }
 });
 
-module.exports = mongoose.model('Event', EventSchema);
+module.exports = mongoose.model('Tracks', TracksSchema);

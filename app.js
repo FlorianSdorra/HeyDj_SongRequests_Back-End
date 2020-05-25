@@ -6,9 +6,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 /** ROUTERS */
-const indexRouter = require("./routes/index")
+const indexRouter = require('./routes/index');
 const eventsRouter = require('./routes/events');
 const usersRouter = require('./routes/users');
+
+const tracksRouter = require('./routes/tracks');
 
 /** INIT THE SERVER */
 const app = express();
@@ -16,20 +18,19 @@ const app = express();
 /** LOGS */
 app.use(logger('dev'));
 
-console.log("APP.JS IS RUNNING")
+console.log('APP.JS IS RUNNING');
 
 /** CONNECT TO MONGO */
-// mongoose.connect("", {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false
-// });
+mongoose.connect("mongodb+srv://flo:0OEqIlxiIDRVkVlB@cluster0-hkch3.mongodb.net/test?retryWrites=true&w=majority", {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+});
 
-mongoose.connection.on(
-  'error',
-  console.error.bind(console, 'connection error:')
-);
+//atlas UN&PW:: flo 0OEqIlxiIDRVkVlB
+
+mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
 mongoose.connection.on('open', () => {
   console.log(`Connected to the database...`);
@@ -41,10 +42,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ['http://localhost:3001'],
+    origin: ['http://localhost:3000'],
     credentials: true
   })
 );
+
+
 
 /** STATIC FILES */
 app.use(express.static(path.join(__dirname, 'public')));
@@ -54,6 +57,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 
+app.use('/tracks', tracksRouter);
 
 /** ERROR HANDLING */
 app.use(function(req, res, next) {
