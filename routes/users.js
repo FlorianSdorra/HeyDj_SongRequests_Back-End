@@ -17,7 +17,7 @@ const {
 
 router
   .route('/')
-  .get(getUsers) //auth, isAdmin
+  .get(auth,isAdmin, getUsers) //auth, isAdmin
   .post(userValidationRules(), userValidationErrorHandling, addUser);
 
 router.route('/me').get(auth, authenticateUser);
@@ -26,8 +26,8 @@ router.route('/logout').post(auth, logoutUser);
 
 router
   .route('/:id')
-  .get(getUser)  //auth,
-  .delete(deleteUser) //auth, 
-  .put(updateUser); // auth, 
+  .get(auth, getUser)  //auth,
+  .delete(auth, deleteUser) //auth, 
+  .put(auth, updateUser); // auth, 
 
 module.exports = router;
