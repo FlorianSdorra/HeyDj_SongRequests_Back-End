@@ -1,1 +1,1 @@
-![screenshotApiEvents](src/assets/img/API_screenshot.png)
+![screenshotApiEvents](assets/img/API_screenshot.png)
