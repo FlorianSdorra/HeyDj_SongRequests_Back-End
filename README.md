@@ -1,2 +1,1 @@
-# Wishlist-app-backend
-Backend for final project
+![screenshotApiEvents](src/assets/img/API_screenshot.png)
